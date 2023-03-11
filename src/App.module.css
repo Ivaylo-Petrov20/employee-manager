@@ -1,0 +1,19 @@
+.form,
+.lists{
+  display:flex;
+  justify-content:center;
+  animation-name: mymove;
+  animation-duration: 3s;
+}
+
+@keyframes mymove{
+  from{
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

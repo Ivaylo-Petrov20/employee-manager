@@ -1,0 +1,40 @@
+.container{
+  margin: 2rem auto;
+  width: 23rem;
+  margin-right: 2rem;
+}
+
+.container h1,
+.container p{
+  text-align: center;
+  color: white;
+}
+
+.container ul{
+  margin: 0;
+  list-style: none;
+  padding: 1rem;
+}
+
+.container li{
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #4d4d4d;
+  background-color: #1f1f1f;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.container button{
+  background-color: #632b88;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid white;
+  padding: 8px 20px;
+  transition: box-shadow 0.15s;
+  border-radius: 2rem;
+  cursor: pointer;
+}
