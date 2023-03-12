@@ -20,9 +20,6 @@ const EmployeeDetails = (props) => {
       <p>
         Salary: <span>${props.salary}</span>
       </p>
-      <p>
-        Tasks Completed: <span>{props.tasksCompleted}</span>
-      </p>
     </div>
   );
 };

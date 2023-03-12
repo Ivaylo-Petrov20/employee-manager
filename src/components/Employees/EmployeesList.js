@@ -15,8 +15,11 @@ const EmployeesList = (props) => {
         {props.employees.length > 0 &&
           props.employees.map((employee) => {
             return (
-              <Employee onDelete={props.onDelete} key={employee.id} employee={employee}>
-              </Employee>
+              <Employee
+                onDelete={props.onDelete}
+                key={employee.id}
+                employee={employee}
+              ></Employee>
             );
           })}
       </ul>

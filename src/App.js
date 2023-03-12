@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styles from "./App.module.css";
 import EmployeesList from "./components/Employees/EmployeesList";
 import Form from "./components/Form/Form";
+import LeaderBoard from "./components/LeaderBoard.js/LeaderBoard";
 import Context from "./components/store/context";
 import TaskList from "./components/Tasks/TasksList";
 
@@ -13,6 +14,12 @@ function App() {
   const [employeeList, setEmployeeList] = useState(DUMMY_EMPLOYEES);
   const [taskList, setTaskList] = useState(DUMMY_TASKS);
   const [isTask, setIsTask] = useState(false);
+  const [showLeaderBoard, setShowLeaderBoard] = useState(false);
+
+  const empoyeesListCopy = [...employeeList];
+  const sortedEmployees = empoyeesListCopy
+    .sort((a, b) => b.tasksCompleted - a.tasksCompleted)
+    .slice(0, 5);
 
   const onAddEmployeeHandler = (employeeData) => {
     const employee = {
@@ -90,9 +97,7 @@ function App() {
     setEmployeeList((prevEmployeeList) => {
       const employeeArr = prevEmployeeList.map((employee) => {
         if (employee.fullName === taskAssignee) {
-          if(employee.tasksCompleted === 0){
-            employee.tasksCompleted += 1;
-          }
+          employee.tasksCompleted += 1;
         }
         return employee;
       });
@@ -108,6 +113,14 @@ function App() {
     setIsTask(false);
   };
 
+  const showLeaderboardHandler = () => {
+    setShowLeaderBoard(true);
+  };
+
+  const hideLeaderBoardHandler = () => {
+    setShowLeaderBoard(false);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -116,8 +129,15 @@ function App() {
         setTaskToFalse,
       }}
     >
+      {showLeaderBoard && (
+        <LeaderBoard
+          employees={sortedEmployees}
+          onClick={hideLeaderBoardHandler}
+        />
+      )}
       <section className={styles.form}>
         <Form
+          onShowLeaderboard={showLeaderboardHandler}
           onAddEmployee={onAddEmployeeHandler}
           onAddTask={onAddTaskHandler}
         />

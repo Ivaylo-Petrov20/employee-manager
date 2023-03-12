@@ -70,6 +70,11 @@ const Form = (props) => {
   return (
     <Card className={styles.container}>
       <form className={styles.form} onSubmit={submitFormHandler}>
+        <div className={styles.buttons}>
+          <button onClick={props.onShowLeaderboard} type="button">
+            Leaderboard
+          </button>
+        </div>
         {!switchForm ? (
           <React.Fragment>
             <div>
